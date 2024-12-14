@@ -4,44 +4,6 @@
 #include <string.h>
 #include <math.h>
 
-typedef struct dataMember {
-    double* inputs;  /* The input data */
-    double* targets; /* The target outputs */
-    double* outputs; /* The actual outputs */
-    double* errors;  /* The error in the output */
-} dataMember;
-
-struct dataset {
-    dataMember* members;     /* The members of the dataset */
-    double*     maxScale;    /* What the max value of the ins/outs are */
-    double*     minScale;    /* What the min value of the ins/outs are */
-    double*     sumSqErrors; /* The sum squared errors of all members */
-    char*       name;        /* The name of the data set */
-    int         numMembers;  /* The number of members in the set */
-    int         numInputs;   /* The number of inputs in the set */
-    int         numOutputs;  /* The number of outputs in the set */
-};
-
-typedef struct neuron {
-    double   output;       /* The output of the neuron */
-    double   delta;        /* The delta of the neuron */
-    double** inputs;       /* An array of pointers to inputs */
-    double*  weights;      /* An array of weights for the inputs + bias */
-    double*  deltaWeights; /* An array of weight changes for inputs + bias */
-    int      numInputs;    /* The number of inputs to the neuron */
-    int      type;         /* The activation type of the neuron */
-} neuron;
-
-struct mlpNetwork {
-    neuron** layers;     /* Layers of neurons */
-    int*     numNeurons; /* Number of neurons in each layer */
-    int      numLayers;  /* The number of layers in the network */
-    double   learnRate;  /* The learning rate of the neurons */
-    double   momentum;   /* The momentum of the neurons */
-    int      learning;   /* The learning type of the network */
-    int      epoch;      /* The current epoch */
-    int      epochMax;   /* The maximum number of epochs */
-};
 
 double sqr( double val ) {
     return ( val * val );
